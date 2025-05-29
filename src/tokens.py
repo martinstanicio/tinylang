@@ -76,7 +76,7 @@ ELLIPSIS = AFD(
 )
 ASSIGN = AFD(token="ASSIGN", delta={0: {"=": 1}}, estados_finales=[1])
 LPAREN = AFD(token="LPAREN", delta={0: {"(": 1}}, estados_finales=[1])
-LPAREN = AFD(token="LPAREN", delta={0: {")": 1}}, estados_finales=[1])
+RPAREN = AFD(token="RPAREN", delta={0: {")": 1}}, estados_finales=[1])
 ARITHMETIC_OP = AFD(
     token="ARITHMETIC_OP",
     delta={0: {"+": 1, "-": 2, "*": 3}},
@@ -133,7 +133,7 @@ tokens = [
     ELLIPSIS,
     ASSIGN,
     LPAREN,
-    LPAREN,
+    RPAREN,
     ARITHMETIC_OP,
     COMPARISON_OP,
     ID,
