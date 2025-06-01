@@ -105,7 +105,9 @@ NUMBER = AFD(
     estados_finales=[2],
 )
 WHITESPACE = AFD(
-    token="WHITESPACE", delta={0: {" ": 1, "\t": 1, "\n": 1}}, estados_finales=[1]
+    token="WHITESPACE",
+    delta={0: {" ": 1, "\t": 1, "\n": 1}, 1: {" ": 1, "\t": 1, "\n": 1}},
+    estados_finales=[1],
 )
 
 
