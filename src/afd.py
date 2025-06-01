@@ -1,4 +1,4 @@
-from util import ESTADO_FINAL, ESTADO_NO_FINAL, ESTADO_TRAMPA
+from .util import ESTADO_FINAL, ESTADO_NO_FINAL, ESTADO_TRAMPA
 
 
 class AFD:

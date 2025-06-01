@@ -1,4 +1,4 @@
-from afd import AFD
+from .afd import AFD
 
 MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 MINUSCULAS = "abcdefghijklmnopqrstuvwxyz"
