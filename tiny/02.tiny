@@ -1,0 +1,5 @@
+program test2.
+var y : int (1 ... 100) = 50;
+begin
+  let y = y + 1;
+end

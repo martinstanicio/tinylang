@@ -1,0 +1,4 @@
+program test12.
+begin
+  let x = @10;
+end

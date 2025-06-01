@@ -1,0 +1,8 @@
+program test6.
+var n : int (0 ... 10) = 5;
+begin
+  if n == 5 goto ok; else goto fail;
+  ok:
+  let n = n + 1;
+  fail:
+end

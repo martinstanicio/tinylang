@@ -1,0 +1,4 @@
+program test14.
+begin
+  let y = 5 %% 3;
+end

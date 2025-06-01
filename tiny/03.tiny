@@ -1,0 +1,10 @@
+program test3.
+begin
+  let a = 5;
+  let b = a * 2;
+  if b >= 10 goto label;
+  else goto other;
+  label:
+  let a = a - 1;
+  other:
+end

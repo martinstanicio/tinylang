@@ -1,0 +1,4 @@
+program test13.
+begin
+  let 1x = 5;
+end
