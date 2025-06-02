@@ -1,9 +1,6 @@
+from string import ascii_letters, digits
+
 from .afd import AFD
-
-MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-MINUSCULAS = "abcdefghijklmnopqrstuvwxyz"
-NUMEROS = "0123456789"
-
 
 PROGRAM = AFD(
     token="PROGRAM",
@@ -90,17 +87,17 @@ COMPARISON_OP = AFD(
 ID = AFD(
     token="ID",
     delta={
-        0: {caracter: 1 for caracter in MAYUSCULAS + MINUSCULAS},
-        1: {caracter: 1 for caracter in MAYUSCULAS + MINUSCULAS + NUMEROS},
+        0: {letter: 1 for letter in ascii_letters},
+        1: {char: 1 for char in ascii_letters + digits},
     },
     estados_finales=[1],
 )
 NUMBER = AFD(
     token="NUMBER",
     delta={
-        0: {numero: 2 for numero in NUMEROS} | {"-": 1},
-        1: {numero: 2 for numero in NUMEROS},
-        2: {numero: 2 for numero in NUMEROS},
+        0: {digit: 2 for digit in digits} | {"-": 1},
+        1: {digit: 2 for digit in digits},
+        2: {digit: 2 for digit in digits},
     },
     estados_finales=[2],
 )
