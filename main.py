@@ -1,7 +1,7 @@
 import os
 from pprint import pp as prettyprint
 
-from src.lexer import lexer
+from src import lexer
 
 
 def main() -> None:

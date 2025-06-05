@@ -5,7 +5,7 @@ import unittest
 # Agregar el directorio padre al path para poder importar el módulo src
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.lexer import lexer
+from src import lexer
 
 
 def gen_tiny(tokens: list[tuple[str, str]]):
