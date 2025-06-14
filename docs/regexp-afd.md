@@ -24,8 +24,15 @@ La lista de tokens utilizados por el lexer, junto con sus respectivos lexemas v√
 - `(ASSIGN, "=")`
 - `(LPAREN, "(")`
 - `(RPAREN, ")")`
-- `(ARITHMETIC_OP, "+" | "-" | "*")`
-- `(COMPARISON_OP, "==" | "<>" | "<" | ">" | "<=" | ">=")`
+- `(PLUS, "+")`
+- `(MINUS, "-")`
+- `(ASTERISK, "*")`
+- `(EQUAL, "==")`
+- `(NOT_EQUAL, "<>")`
+- `(LESS_THAN, "<")`
+- `(GREATER_THAN, ">")`
+- `(LESS_EQUAL, "<=")`
+- `(GREATER_EQUAL, ">=")`
 - `(ID, id)` (A-Z, a-z y 0-9, pero no puede comenzar con un n√∫mero)
 - `(NUMBER, num)` (solo se considera el conjunto $\mathbb{Z}$)
 - `(WHITESPACE, " " | "\t" | "\n")`
@@ -429,30 +436,58 @@ flowchart LR
     q0 & q1 & T -- "..." --> T
 ```
 
-## ARITHMETIC_OP
+## PLUS
 
 ```math
-\left( \text{"+"} + \text{"-"} + \text{"*"} \right)
+\text{"+"}
 ```
 
 ```mermaid
 flowchart LR
     q0(("q0"))
     q1((("q1")))
-    q2((("q2")))
-    q3((("q3")))
     T(("T"))
 
-    q0 -- "\+" --> q1
-    q0 -- "\-" --> q2
-    q0 -- "\*" --> q3
-    q0 & q1 & q2 & q3 & T -- "..." --> T
+    q0 -- "+" --> q1
+    q0 & q1 & T -- "..." --> T
 ```
 
-## COMPARISON_OP
+## MINUS
 
 ```math
-\left( \text{"=="} + \text{"<>"} + \text{"<"} + \text{">"} + \text{"<="} + \text{">="} \right)
+\text{"-"}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1((("q1")))
+    T(("T"))
+
+    q0 -- "-" --> q1
+    q0 & q1 & T -- "..." --> T
+```
+
+## ASTERISK
+
+```math
+\text{"*"}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1((("q1")))
+    T(("T"))
+
+    q0 -- "*" --> q1
+    q0 & q1 & T -- "..." --> T
+```
+
+## EQUAL
+
+```math
+\text{"=="}
 ```
 
 ```mermaid
@@ -460,21 +495,93 @@ flowchart LR
     q0(("q0"))
     q1(("q1"))
     q2((("q2")))
-    q3((("q3")))
-    q4((("q4")))
-    q5((("q5")))
-    q6((("q6")))
-    q7((("q7")))
     T(("T"))
 
-    q0 -- "\=" --> q1 -- "\=" --> q2
-    q0 -- "\<" --> q3
-    q3 -- "\>" --> q4
-    q3 -- "\=" --> q5
-    q0 -- "\>" --> q6
-    q6 -- "\=" --> q7
+    q0 -- "=" --> q1 -- "=" --> q2
+    q0 & q1 & q2 & T -- "..." --> T
+```
 
-    q0 & q1 & q2 & q3 & q4 & q5 & q6 & q7 & T -- "..." --> T
+## NOT_EQUAL
+
+```math
+\text{"<>"}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1(("q1"))
+    q2((("q2")))
+    T(("T"))
+
+    q0 -- "<" --> q1 -- ">" --> q2
+    q0 & q1 & q2 & T -- "..." --> T
+```
+
+## LESS_THAN
+
+```math
+\text{"<"}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1((("q1")))
+    T(("T"))
+
+    q0 -- "<" --> q1
+    q0 & q1 & T -- "..." --> T
+```
+
+## GREATER_THAN
+
+```math
+\text{">"}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1((("q1")))
+    T(("T"))
+
+    q0 -- ">" --> q1
+    q0 & q1 & T -- "..." --> T
+```
+
+## LESS_EQUAL
+
+```math
+\text{"<="}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1(("q1"))
+    q2((("q2")))
+    T(("T"))
+
+    q0 -- "<" --> q1 -- "=" --> q2
+    q0 & q1 & q2 & T -- "..." --> T
+```
+
+## GREATER_EQUAL
+
+```math
+\text{">="}
+```
+
+```mermaid
+flowchart LR
+    q0(("q0"))
+    q1(("q1"))
+    q2((("q2")))
+    T(("T"))
+
+    q0 -- ">" --> q1 -- "=" --> q2
+    q0 & q1 & q2 & T -- "..." --> T
 ```
 
 ## ID

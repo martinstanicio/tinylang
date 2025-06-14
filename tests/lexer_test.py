@@ -102,9 +102,9 @@ class LexerTest(unittest.TestCase):
 
     def test_arithmetic_ops(self):
         tokens_esperados = [
-            ("ARITHMETIC_OP", "+"),
-            ("ARITHMETIC_OP", "-"),
-            ("ARITHMETIC_OP", "*"),
+            ("PLUS", "+"),
+            ("MINUS", "-"),
+            ("ASTERISK", "*"),
         ]
         tiny = gen_tiny(tokens_esperados)
         tokens = lexer(tiny)
@@ -112,12 +112,12 @@ class LexerTest(unittest.TestCase):
 
     def test_comparison_ops(self):
         tokens_esperados = [
-            ("COMPARISON_OP", "=="),
-            ("COMPARISON_OP", "<>"),
-            ("COMPARISON_OP", "<"),
-            ("COMPARISON_OP", "<="),
-            ("COMPARISON_OP", ">"),
-            ("COMPARISON_OP", ">="),
+            ("EQUAL", "=="),
+            ("NOT_EQUAL", "<>"),
+            ("LESS_THAN", "<"),
+            ("LESS_EQUAL", "<="),
+            ("GREATER_THAN", ">"),
+            ("GREATER_EQUAL", ">="),
         ]
         tiny = gen_tiny(tokens_esperados)
         tokens = lexer(tiny)

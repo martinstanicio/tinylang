@@ -74,15 +74,20 @@ ELLIPSIS = AFD(
 ASSIGN = AFD(token="ASSIGN", delta={0: {"=": 1}}, estados_finales=[1])
 LPAREN = AFD(token="LPAREN", delta={0: {"(": 1}}, estados_finales=[1])
 RPAREN = AFD(token="RPAREN", delta={0: {")": 1}}, estados_finales=[1])
-ARITHMETIC_OP = AFD(
-    token="ARITHMETIC_OP",
-    delta={0: {"+": 1, "-": 2, "*": 3}},
-    estados_finales=[1, 2, 3],
+PLUS = AFD(token="PLUS", delta={0: {"+": 1}}, estados_finales=[1])
+MINUS = AFD(token="MINUS", delta={0: {"-": 1}}, estados_finales=[1])
+ASTERISK = AFD(token="ASTERISK", delta={0: {"*": 1}}, estados_finales=[1])
+EQUAL = AFD(token="EQUAL", delta={0: {"=": 1}, 1: {"=": 2}}, estados_finales=[2])
+NOT_EQUAL = AFD(
+    token="NOT_EQUAL", delta={0: {"<": 1}, 1: {">": 2}}, estados_finales=[2]
 )
-COMPARISON_OP = AFD(
-    token="COMPARISON_OP",
-    delta={0: {"=": 1, "<": 3, ">": 6}, 1: {"=": 2}, 3: {">": 4, "=": 5}, 6: {"=": 7}},
-    estados_finales=[2, 3, 4, 5, 6, 7],
+LESS_THAN = AFD(token="LESS_THAN", delta={0: {"<": 1}}, estados_finales=[1])
+GREATER_THAN = AFD(token="GREATER_THAN", delta={0: {">": 1}}, estados_finales=[1])
+LESS_EQUAL = AFD(
+    token="LESS_EQUAL", delta={0: {"<": 1}, 1: {"=": 2}}, estados_finales=[2]
+)
+GREATER_EQUAL = AFD(
+    token="GREATER_EQUAL", delta={0: {">": 1}, 1: {"=": 2}}, estados_finales=[2]
 )
 ID = AFD(
     token="ID",
@@ -133,8 +138,15 @@ tokens = [
     ASSIGN,
     LPAREN,
     RPAREN,
-    ARITHMETIC_OP,
-    COMPARISON_OP,
+    PLUS,
+    MINUS,
+    ASTERISK,
+    EQUAL,
+    NOT_EQUAL,
+    LESS_THAN,
+    GREATER_THAN,
+    LESS_EQUAL,
+    GREATER_EQUAL,
     ID,
     NUMBER,
     WHITESPACE,
