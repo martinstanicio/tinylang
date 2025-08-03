@@ -47,7 +47,7 @@ class LexerTest(unittest.TestCase):
             ("WHITESPACE", "\n"),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_identifier(self):
@@ -64,7 +64,7 @@ class LexerTest(unittest.TestCase):
             ("WHITESPACE", "\n"),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_number(self):
@@ -77,13 +77,13 @@ class LexerTest(unittest.TestCase):
             ("WHITESPACE", " "),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_whitespace(self):
         tokens_esperados = [("WHITESPACE", " \t\n")]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_symbols(self):
@@ -97,7 +97,7 @@ class LexerTest(unittest.TestCase):
             ("DOT", "."),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_arithmetic_ops(self):
@@ -107,7 +107,7 @@ class LexerTest(unittest.TestCase):
             ("ASTERISK", "*"),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_comparison_ops(self):
@@ -120,7 +120,7 @@ class LexerTest(unittest.TestCase):
             ("GREATER_EQUAL", ">="),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_invalid_character(self):
@@ -130,7 +130,7 @@ class LexerTest(unittest.TestCase):
             ("ERROR", "?"),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
     def test_mixed_valid_and_invalid(self):
@@ -141,7 +141,7 @@ class LexerTest(unittest.TestCase):
             ("ID", "abc"),
         ]
         tiny = gen_tiny(tokens_esperados)
-        tokens = lexer(tiny)
+        tokens = lexer(tiny, debug=True)
         self.assertEqual(tokens, tokens_esperados)
 
 

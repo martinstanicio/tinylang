@@ -37,6 +37,9 @@ La lista de tokens utilizados por el lexer, junto con sus respectivos lexemas v�
 - `(NUMBER, num)` (solo se considera el conjunto $\mathbb{Z}$)
 - `(WHITESPACE, " " | "\t" | "\n")`
 
+> [!warning]
+> El token `WHITESPACE` se utiliza internamente por cuestiones de legibilidad del código fuente y facilidad de desarrollo (del lexer). No forma parte de la gramática, ni de la salida del lexer.
+
 A continuación, se encuentran detallados cada uno de ellos, incluyendo su expresión regular y autómata finito determinístico (AFD) correspondiente.
 
 > [!note]

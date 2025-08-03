@@ -2,7 +2,7 @@ from .tokens import tokens as AFDS
 from .util import ESTADO_FINAL, ESTADO_TRAMPA
 
 
-def lexer(tiny: str):
+def lexer(tiny: str, *, debug: bool = False) -> list:
     tokens = []
     posicion = 0
 
@@ -46,4 +46,7 @@ def lexer(tiny: str):
         posicion -= 1
         tokens.append((posibles_tokens[0], lexema))
 
-    return tokens
+    if debug: return tokens
+
+    tokens_sin_whitespace = list(filter(lambda t: t[0] != "WHITESPACE", tokens))
+    return tokens_sin_whitespace
