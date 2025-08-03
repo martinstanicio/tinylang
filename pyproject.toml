@@ -1,0 +1,7 @@
+[project]
+name = "tinylang"
+version = "0.1.0"
+description = "Implementación en Python de un analizador lexicográfico (lexer) y analizador sintáctico (parser)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
