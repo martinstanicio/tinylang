@@ -120,8 +120,8 @@ P' = \left\{
     Body \to \text{begin} \space StatementList \space \text{end} | \text{var} \space DecVar \space DecVarList \space \text{begin} \space StatementList \space \text{end} \\
     DecVarList \to DecVar \space DecVarList | \lambda \\
     DecVar \to \text{id :} \space DecVarBody \\
-    DecVarBody \to \text{int} \left( \text{num} \dots \text{num} \right) \text{= num ;} | \text{bool =} \space DecVarBody' \\
-    DecVarBody' \to \text{true ;} | \text{false ;} \\
+    DecVarBody \to \text{int} \left( \text{num} \dots \text{num} \right) \text{= num ;} | \text{bool =} \space DecVarBody' \space \text{;} \\
+    DecVarBody' \to \text{true} | \text{false} \\
     StatementList \to Statement \space StatementList | \lambda \\
     Statement \to \text{id :} \space StatementBody | StatementBody \\
     StatementBody \to Assignment | Conditional | Goto \\
