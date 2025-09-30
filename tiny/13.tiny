@@ -1,4 +1,6 @@
-program test13.
+program p13 .
+var
+a : bol = true ;
 begin
-  let 1x = 5;
+let a = not false ;
 end

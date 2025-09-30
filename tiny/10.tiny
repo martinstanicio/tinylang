@@ -1,5 +1,16 @@
-program test10.
-var count : int (0 ... 100) = 0;
+program p10 .
+var
+a : int (0 ... 10) = 2 ;
+b : int (0 ... 10) = 3 ;
+c : bool = true ;
 begin
-  let count = count + 1;
+let a = b + 4 ;
+if a > 5 goto S1 ; else goto S2 ;
+S1 : let c = not c ;
+if c == false goto S3 ;
+S2 : let b = a * 2 ;
+goto S3 ;
+S3 : let a = b - a ;
+goto fin ;
+fin : let c = not false ;
 end

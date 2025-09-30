@@ -1,9 +1,14 @@
-program test8.
+program p8 .
+var
+i : int (0 ... 20) = 0 ;
+total : int (0 ... 20) = 0 ;
+flag : bool = false ;
 begin
-  let result = 1;
-  let i = 1;
-  if i <= 10 goto loop;
-  loop:
-  let result = result * i;
-  let i = i + 1;
+let i = i + 1 ;
+if i < 10 goto ciclo ;
+ciclo : let total = total + i ;
+if total >= 15 goto endciclo ; else goto ciclo ;
+endciclo : let flag = not flag ;
+goto salida ;
+salida : let i = total - 5 ;
 end

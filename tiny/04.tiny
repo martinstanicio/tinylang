@@ -1,5 +1,13 @@
-program test4.
-var flag : bool = true;
+program p4 .
+var
+counter : int (0 ... 100) = 0 ;
+done : bool = false ;
 begin
-  let flag = not flag;
+let counter = counter + 1 ;
+if counter < 10 goto loop ; else goto salida ;
+loop : let done = not done ;
+goto counterCheck ;
+counterCheck : if done == true goto endloop ; else goto loop ;
+endloop : let counter = counter * 2 ;
+salida : let done = not false ;
 end

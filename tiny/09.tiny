@@ -1,8 +1,16 @@
-program test9.
+program p9 .
+var
+val : int (0 ... 100) = 50 ;
+check : bool = true ;
+tmp : int (0 ... 10) = 3 ;
 begin
-  let str = true;
-  let a = 100;
-  let b = 200;
-  if a <> b goto diff;
-  diff:
+let tmp = val - 20 ;
+if tmp >= 0 goto L1 ; else goto L2 ;
+L1 : let check = not check ;
+if check == false goto L3 ;
+L2 : let val = tmp + 5 ;
+goto L3 ;
+L3 : let tmp = val * 2 ;
+goto fin ;
+fin : let check = not false ;
 end

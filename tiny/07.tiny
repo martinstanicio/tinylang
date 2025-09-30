@@ -1,6 +1,14 @@
-program test7.
+program p7 .
+var
+num : int (0 ... 10) = 1 ;
+res : int (0 ... 10) = 0 ;
+ok : bool = true ;
 begin
-  let x = 10;
-  let y = x < 20;
-  let z = x > 5;
+let res = num * 2 ;
+if res > 5 goto paso1 ; else goto paso2 ;
+paso1 : let ok = not ok ;
+if ok == true goto fin ;
+paso2 : let num = res + 3 ;
+goto paso1 ;
+fin : let res = num - 1 ;
 end

@@ -1,8 +1,15 @@
-program test6.
-var n : int (0 ... 10) = 5;
+program p6 .
+var
+a : int (0 ... 50) = 25 ;
+b : int (0 ... 50) = 30 ;
+flag : bool = true ;
 begin
-  if n == 5 goto ok; else goto fail;
-  ok:
-  let n = n + 1;
-  fail:
+let a = b - 10 ;
+if a <= b goto L1 ;
+L1 : let flag = not flag ;
+if flag == false goto L2 ; else goto L3 ;
+L2 : let b = a + 5 ;
+goto fin ;
+L3 : let a = b * 2 ;
+fin : let flag = not false ;
 end

@@ -1,4 +1,10 @@
-program test14.
+program p14 .
+var
+x : int (0 ... 10) = 5 ;
 begin
-  let y = 5 %% 3;
+if x > 3 goto L1 else goto L2 ;
+L1 : let x = x + 1 ;
+goto fin
+L2 : let x = x - 1 ;
+fin : let x = x * 2 ;
 end

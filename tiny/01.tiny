@@ -1,4 +1,13 @@
-program test1.
+program p1 .
+var
+x : int (1 ... 10) = 5 ;
+flag : bool = true ;
+y : int (0 ... 100) = 42 ;
 begin
-  let x = 10;
+let x = y + 5 ;
+if x > 10 goto etiqueta1 ; else goto etiqueta2 ;
+etiqueta1 : let y = not flag ;
+goto fin ;
+etiqueta2 : let flag = not false ;
+fin : let x = x - y ;
 end

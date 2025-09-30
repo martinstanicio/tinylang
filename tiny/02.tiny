@@ -1,5 +1,14 @@
-program test2.
-var y : int (1 ... 100) = 50;
+program p2 .
+var
+a : bool = false ;
+b : int (0 ... 5) = 3 ;
+c : int (10 ... 20) = 15 ;
 begin
-  let y = y + 1;
+let b = c * 2 ;
+if b <= 30 goto paso1 ;
+paso1 : let a = not a ;
+if a == true goto fin ; else goto paso2 ;
+paso2 : let c = b + 1 ;
+goto fin ;
+fin : let b = c - 2 ;
 end

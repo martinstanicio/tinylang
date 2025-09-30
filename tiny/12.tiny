@@ -1,4 +1,6 @@
-program test12.
+program p12 .
+var
+x$ : int (1 ... 5) = 2 ;
 begin
-  let x = @10;
+let x$ = 1 ;
 end

@@ -1,4 +1,15 @@
-program test5.
+program p5 .
+var
+x : int (1 ... 5) = 2 ;
+y : int (1 ... 5) = 3 ;
+z : bool = false ;
 begin
-  let x = (1 + 2) * (3 - 4);
+let z = not z ;
+if x <> y goto etiquetaA ; else goto etiquetaB ;
+etiquetaA : let y = x + y ;
+if y >= 5 goto etiquetaC ;
+etiquetaC : let z = not true ;
+goto fin ;
+etiquetaB : let x = y * 2 ;
+fin : let x = x - y ;
 end

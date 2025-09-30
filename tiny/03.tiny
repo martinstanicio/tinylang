@@ -1,10 +1,15 @@
-program test3.
+program p3 .
+var
+m : int (1 ... 9) = 1 ;
+n : int (1 ... 9) = 2 ;
+ok : bool = true ;
 begin
-  let a = 5;
-  let b = a * 2;
-  if b >= 10 goto label;
-  else goto other;
-  label:
-  let a = a - 1;
-  other:
+let m = n + 3 ;
+if m >= 5 goto L1 ;
+L1 : let ok = not ok ;
+if ok == false goto L2 ; else goto L3 ;
+L2 : let n = m * 4 ;
+goto fin ;
+L3 : let m = n - 1 ;
+fin : let ok = not false ;
 end

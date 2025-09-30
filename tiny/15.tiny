@@ -1,13 +1,7 @@
-program test15.
-
+program p15 .
+var
+flag : bool = true ;
 begin
-
-  let    a     =   1  ;
-  
-  let
-  b
-  =
-  2
-  ;
-
-end
+let flag = not flag ;
+if flag == true goto L1 ;
+L1 : let flag = not false ;
