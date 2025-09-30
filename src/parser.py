@@ -61,7 +61,7 @@ class Parser:
                 self.DecVarList()
             case _:
                 raise ParseError(
-                    f"Body: se esperaba BEGIN, o VAR, pero se obtuvo {tipo_token}"
+                    f"Body: Se esperaba BEGIN, o VAR, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
         self.consumir("BEGIN")
@@ -111,7 +111,7 @@ class Parser:
                 self.DecVarBodyP()
             case _:
                 raise ParseError(
-                    f"DecVarBody: se esperaba INT, o BOOL, pero se obtuvo {tipo_token}"
+                    f"DecVarBody: Se esperaba INT, o BOOL, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # DecVarBody' -> true
@@ -128,7 +128,7 @@ class Parser:
                 self.consumir("FALSE")
             case _:
                 raise ParseError(
-                    f"DecVarBodyP: se esperaba TRUE, o FALSE, pero se obtuvo {tipo_token}"
+                    f"DecVarBodyP: Se esperaba TRUE, o FALSE, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # StatementList -> Statement StatementList
@@ -175,7 +175,7 @@ class Parser:
                 self.Goto()
             case _:
                 raise ParseError(
-                    f"StatementBody: se esperaba LET, IF, o GOTO, pero se obtuvo {tipo_token}"
+                    f"StatementBody: Se esperaba LET, IF, o GOTO, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # Goto -> goto id ;
@@ -210,7 +210,7 @@ class Parser:
                 self.Rvalue()
             case _:
                 raise ParseError(
-                    f"AssignmentP: se esperaba ID, NUMBER, TRUE, FALSE, o NOT, pero se obtuvo {tipo_token}"
+                    f"AssignmentP: Se esperaba ID, NUMBER, TRUE, FALSE, o NOT, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # Assignment'' -> Op Rvalue
@@ -239,7 +239,7 @@ class Parser:
                 self.BoolOp()
             case _:
                 raise ParseError(
-                    f"Op: se esperaba PLUS, MINUS, ASTERISK, OR, o AND, pero se obtuvo {tipo_token}"
+                    f"Op: Se esperaba PLUS, MINUS, ASTERISK, OR, o AND, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # MatOp -> +
@@ -260,7 +260,7 @@ class Parser:
                 self.consumir("ASTERISK")
             case _:
                 raise ParseError(
-                    f"MatOp: se esperaba PLUS, MINUS, o ASTERISK, pero se obtuvo {tipo_token}"
+                    f"MatOp: Se esperaba PLUS, MINUS, o ASTERISK, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # BoolOp -> or
@@ -277,7 +277,7 @@ class Parser:
                 self.consumir("AND")
             case _:
                 raise ParseError(
-                    f"BoolOp: se esperaba OR, o AND, pero se obtuvo {tipo_token}"
+                    f"BoolOp: Se esperaba OR, o AND, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # Lvalue -> id
@@ -307,7 +307,7 @@ class Parser:
                 self.consumir("FALSE")
             case _:
                 raise ParseError(
-                    f"Rvalue: se esperaba ID, NUMBER, TRUE, o FALSE, pero se obtuvo {tipo_token}"
+                    f"Rvalue: Se esperaba ID, NUMBER, TRUE, o FALSE, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
     # Conditional -> if CompExpr Goto Conditional'
@@ -367,7 +367,7 @@ class Parser:
                 self.consumir("GREATER_EQUAL")
             case _:
                 raise ParseError(
-                    f"CompOp: se esperaba EQUAL, NOT_EQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, o GREATER_EQUAL, pero se obtuvo {tipo_token}"
+                    f"CompOp: Se esperaba EQUAL, NOT_EQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, o GREATER_EQUAL, pero se encontró {tipo_token} en posición {self.i}"
                 )
 
 
