@@ -73,12 +73,17 @@ class Parser:
     def DecVarList(self):
         tipo_token, _ = self.token_actual()
 
-        if tipo_token == "ID":
-            self.producciones.append("DecVarList -> DecVar DecVarList")
-            self.DecVar()
-            self.DecVarList()
-        else:
-            self.producciones.append("DecVarList -> λ")
+        match tipo_token:
+            case "ID":
+                self.producciones.append("DecVarList -> DecVar DecVarList")
+                self.DecVar()
+                self.DecVarList()
+            case "BEGIN":
+                self.producciones.append("DecVarList -> λ")
+            case _:
+                raise ParseError(
+                    f"DecVarList: Se esperaba ID, o BEGIN, pero se encontró {tipo_token} en posición {self.i}"
+                )
 
     # DecVar -> id : DecVarBody ;
     def DecVar(self):
@@ -136,12 +141,17 @@ class Parser:
     def StatementList(self):
         tipo_token, _ = self.token_actual()
 
-        if tipo_token in ["ID", "LET", "IF", "GOTO"]:
-            self.producciones.append("StatementList -> Statement StatementList")
-            self.Statement()
-            self.StatementList()
-        else:
-            self.producciones.append("StatementList -> λ")
+        match tipo_token:
+            case "ID" | "LET" | "IF" | "GOTO":
+                self.producciones.append("StatementList -> Statement StatementList")
+                self.Statement()
+                self.StatementList()
+            case "END":
+                self.producciones.append("StatementList -> λ")
+            case _:
+                raise ParseError(
+                    f"StatementList: Se esperaba ID, LET, IF, GOTO, o END, pero se encontró {tipo_token} en posición {self.i}"
+                )
 
     # Statement -> id : StatementBody
     # Statement -> StatementBody
@@ -218,12 +228,17 @@ class Parser:
     def AssignmentPP(self):
         tipo_token, _ = self.token_actual()
 
-        if tipo_token in ["PLUS", "MINUS", "ASTERISK", "OR", "AND"]:
-            self.producciones.append("Assignment'' -> Op Rvalue")
-            self.Op()
-            self.Rvalue()
-        else:
-            self.producciones.append("Assignment'' -> λ")
+        match tipo_token:
+            case "PLUS" | "MINUS" | "ASTERISK" | "OR" | "AND":
+                self.producciones.append("Assignment'' -> Op Rvalue")
+                self.Op()
+                self.Rvalue()
+            case "SEMICOLON":
+                self.producciones.append("Assignment'' -> λ")
+            case _:
+                raise ParseError(
+                    f"AssignmentPP: Se esperaba PLUS, MINUS, ASTERISK, OR, AND o SEMICOLON, pero se encontró {tipo_token} en posición {self.i}"
+                )
 
     # Op -> MatOp
     # Op -> BoolOp
@@ -323,12 +338,17 @@ class Parser:
     def ConditionalP(self):
         tipo_token, _ = self.token_actual()
 
-        if tipo_token == "ELSE":
-            self.producciones.append("Conditional' -> else Goto")
-            self.consumir("ELSE")
-            self.Goto()
-        else:
-            self.producciones.append("Conditional' -> λ")
+        match tipo_token:
+            case "ELSE":
+                self.producciones.append("Conditional' -> else Goto")
+                self.consumir("ELSE")
+                self.Goto()
+            case "ID" | "LET" | "IF" | "GOTO" | "END":
+                self.producciones.append("Conditional' -> λ")
+            case _:
+                raise ParseError(
+                    f"ConditionalP: Se esperaba ELSE, ID, LET, IF, GOTO, o END, pero se encontró {tipo_token} en posición {self.i}"
+                )
 
     # CompExpr -> Rvalue CompOp Rvalue
     def CompExpr(self):
